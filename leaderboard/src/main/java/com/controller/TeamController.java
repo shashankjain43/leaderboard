@@ -22,7 +22,7 @@ public class TeamController {
 	public ServiceResponse<CreateTeamResponse> createTeam(@RequestBody CreateTeamRequest request) {
 		Team team = teamService.createTeam(request);
 		CreateTeamResponse res = new CreateTeamResponse();
-		res.setTeamId(team.getTeamId());
+		res.setTeamId(team.getId());
 		ServiceResponse<CreateTeamResponse> response = new ServiceResponse<>();
 		response.setResponse(res);
 		return response;

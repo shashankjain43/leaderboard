@@ -59,7 +59,7 @@ public class ScoreBoard {
                 List<Team> teams = teamDao.findByMatchId(match.getId());
                 if (Objects.nonNull(teams)) {
                     for (Team team : teams) {
-                        TeamPlayer teamPlayer = teamPlayerDao.findByPlayerIdAndTeamId(randomMatchPlayer.getPlayer().getId(), team.getTeamId());
+                        TeamPlayer teamPlayer = teamPlayerDao.findByPlayerIdAndTeamId(randomMatchPlayer.getPlayer().getId(), team.getId());
                         if (Objects.nonNull(teamPlayer)) {
                             teamPlayer.setScore(randomMatchPlayer.getScore());
                             teamPlayerDao.save(teamPlayer);
