@@ -1,13 +1,11 @@
 package com.controller;
 
-import com.model.LeaderBoard;
-import com.request.AddPlayersToMatchRequest;
+import com.entity.LeaderBoard;
+import com.entity.Team;
 import com.request.GetLBSnapshotRequest;
-import com.response.AddPlayersToMatchResponse;
 import com.response.GetLBSnapshotResponse;
 import com.response.ServiceResponse;
 import com.service.ILBService;
-import com.service.IMatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +23,7 @@ public class LBController {
 
 	@RequestMapping(value = "/snapshot", produces = "application/JSON", method = RequestMethod.POST)
 	public ServiceResponse<GetLBSnapshotResponse> getLeaderboardSnapshot(@RequestBody GetLBSnapshotRequest request) {
-		List<LeaderBoard> snapshot = lbService.getLBSnapshot(request);
+		List<Team> snapshot = lbService.getLBSnapshot(request);
 		GetLBSnapshotResponse res = new GetLBSnapshotResponse();
 		res.setSnapshot(snapshot);
 		ServiceResponse<GetLBSnapshotResponse> response = new ServiceResponse<>();

@@ -1,5 +1,6 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,13 +19,22 @@ public class Team {
 
     @Id
     @GeneratedValue
-    int id;
+    int teamId;
     String teamName;
+
+    @JsonIgnore
     int userId;
+    @JsonIgnore
     int matchId;
+    @JsonIgnore
     int captainId;
+    @JsonIgnore
     int vcaptainId;
     double totalScore;
     @OneToMany(mappedBy = "team")
+    @JsonIgnore
     List<TeamPlayer> teamPlayers;
+
+    @Transient
+    int rank;
 }
